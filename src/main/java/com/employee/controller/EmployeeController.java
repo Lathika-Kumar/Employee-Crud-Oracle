@@ -65,7 +65,15 @@ public class EmployeeController {
         }
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/department/{department}")
+    public ResponseEntity<List<Employee>> getEmployeesByDepartment(
+            @PathVariable String department) {
 
+        List<Employee> employees =
+                employeeService.getEmployeesByDepartment(department);
+
+        return ResponseEntity.ok(employees);
+    }
     // Turns a validation failure (e.g. missing name, salary <= 0) into a 400
     // response instead of a 500, with the reason in the response body.
     @ExceptionHandler(IllegalArgumentException.class)

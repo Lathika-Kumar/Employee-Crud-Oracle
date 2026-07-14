@@ -43,6 +43,9 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
         return true;
     }
+    public List<Employee> getEmployeesByDepartment(String department) {
+        return employeeRepository.findByDepartment(department);
+    }
 
     private void validateEmployee(Employee employee) {
         if (employee.getName() == null || employee.getName().trim().isEmpty()) {
